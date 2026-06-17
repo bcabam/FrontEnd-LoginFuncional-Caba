@@ -3,92 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Iniciar Sesión - SportClub</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather+Sans:ital,wght@0,400;0,500;1,500&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-color: #C9CBD1 !important; 
+        :root {
+            --primary-color: #2E1A47;
+            --primary-hover: #402565;
+            --accent-color: #F2B705;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
         }
 
-        .btn-custom {
-            background-color: #7B61FF;
-            color: white;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        .btn-custom:hover {
-            background-color: #6a52e0;
-            color: white;
-            transform: scale(1.02);
+        /* AQUÍ ESTÁ LA MAGIA DEL FONDO */
+        body.auth-body {
+            background: linear-gradient(rgba(46, 26, 71, 0.7), rgba(0, 0, 0, 0.8)), url('assets/gimnasio2.webp') no-repeat center center fixed !important;
+            background-size: cover !important;
+            font-family: 'Merriweather Sans', sans-serif !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
         }
 
-        .animacion-error {
-            animation: deslizarAparecer 0.4s ease-out forwards;
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .login-logo-img {
+            max-width: 300px;
+            height: auto;
+            filter: drop-shadow(2px 0px 0px rgba(255, 255, 255, 0.85)) 
+                    drop-shadow(-2px 0px 0px rgba(255, 255, 255, 0.85)) 
+                    drop-shadow(0px 2px 0px rgba(255, 255, 255, 0.85)) 
+                    drop-shadow(0px -2px 0px rgba(255, 255, 255, 0.85));
+        }
+
+        .login-card {
+            background-color: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-card h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+        }
+
+        .input-group-custom {
+            margin-bottom: 20px;
+        }
+
+        .input-group-custom label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .input-group-custom input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #333;
         }
         
-        @keyframes deslizarAparecer {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .input-group-custom input:focus {
+            outline: none !important;
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 5px rgba(252, 209, 42, 0.5) !important;
+        }
+
+        .btn-ingresar {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            border: 3px solid var(--accent-color);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .btn-ingresar:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .login-links {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 25px;
+        }
+
+        .login-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .login-links a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
         }
     </style>
 </head>
-<body class="d-flex align-items-center justify-content-center vh-100">
 
-    <main class="container" style="max-width: 400px;">
-        <div class="card shadow p-4 rounded-3 border-0">
-            <div class="card-body">
-                
-                <h2 class="text-center fw-bold text-dark mb-1">Inicio de Sesión</h2>
-                <p class="text-center text-muted small mb-4">Accede a tu cuenta</p>
-                
-                <form id="login-form" novalidate>
-                    <div class="mb-3">
-                        <label for="correo" class="form-label fw-semibold small">Correo Electrónico</label>
-                        <input type="email" id="correo" name="correo" class="form-control" placeholder="tu@correo.com" required>
-                    </div>
+<body class="auth-body">
 
-                    <div class="mb-4">
-                        <label for="contrasena" class="form-label fw-semibold small">Contraseña</label>
-                        <input type="password" id="contrasena" name="contrasena" class="form-control" placeholder="Contraseña" required>
-                    </div>
+    <main class="login-container">
+        <header class="logo-container">
+            <img src="assets/logo_empresa_letra_v1.png" alt="SportClub Logo" class="login-logo-img">
+        </header>
 
-                    <button type="submit" class="btn btn-custom w-100 fw-bold">
-                        Ingresar
-                    </button>
-                    
-                    <p id="error-msg" class="text-danger text-center mt-3 small fw-bold animacion-error" style="display: none;">
-                        La dirección de correo o la contraseña no son correctas.
-                    </p>
-                </form>
+        <section class="login-card">
+            <h1>Inicio de Sesión</h1>
+            
+            <form id="login-form" novalidate>
+                <div class="input-group-custom">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" placeholder="Ingresa tu correo" required>
+                </div>
 
-                <hr class="my-4 text-muted">
+                <div class="input-group-custom">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" placeholder="Ingresa tu contraseña" required>
+                </div>
 
-                <footer class="text-center small">
-                    <div class="mb-2">
-                        <a href="#" class="text-decoration-none text-primary">¿Olvidaste tu contraseña?</a>
-                        <span class="text-muted mx-2">|</span>
-                        <a href="#" class="text-decoration-none text-primary">Registrarse</a>
-                    </div>
-                    <div class="mb-3">
-                        <a href="#" class="text-decoration-none text-dark fw-semibold">Volver a Inicio</a>
-                    </div>
-                    <div class="text-muted pt-2">
-                        ¿No tienes cuenta? <a href="#" class="text-decoration-none text-primary">Crear una nueva</a>
-                    </div>
-                </footer>
+                <p id="error-msg" class="text-danger small fw-bold text-center mt-2" style="display: none;"></p>
 
+                <button type="submit" class="btn-ingresar mt-3">Ingresar</button>
+            </form>
+
+            <div class="login-links">
+                <p class="mb-1 text-muted">¿No tienes cuenta? <a href="register.html">Crear una nueva</a></p>
             </div>
-        </div>
+        </section>
     </main>
 
-    <script src="js/users.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/login.js"></script>
 </body>
 </html>
