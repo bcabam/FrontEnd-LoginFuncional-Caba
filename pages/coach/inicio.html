@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Sistema Deportivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { --accent-color: var(--role-coach); --accent-light: var(--role-coach-light); }
+        .sidebar { --accent-color: var(--role-coach); }
+        .sidebar { 
+        --accent-color: var(--role-coach); 
+        --sidebar-bg: #114227; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d-flex">
+
+        <nav class="sidebar d-flex flex-column" id="sidebar">
+            <div class="sidebar-header">
+                <img src="../../assets/logo_empresa_letra_v1.png" alt="SportClub" class="brand-logo">
+                <button id="toggle-sidebar" type="button" title="Contraer/Expandir menú" aria-label="Contraer o expandir menú">
+                    <i data-lucide="menu" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-nav flex-grow-1">
+                <a href="inicio.html" class="nav-link active">
+                    <i data-lucide="home" aria-hidden="true"></i>
+                    <span class="nav-text">Inicio</span>
+                </a>
+                <a href="asistencia.html" class="nav-link">
+                    <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                    <span class="nav-text">Asistencia</span>
+                </a>
+                <a href="dashboard.html" class="nav-link">
+                    <i data-lucide="user-cog" aria-hidden="true"></i>
+                    <span class="nav-text">Mi Perfil</span>
+                </a>
+            </div>
+
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn" class="nav-link">
+                    <i data-lucide="log-out" aria-hidden="true"></i>
+                    <span class="nav-text">Cerrar Sesión</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+
+            <div class="hero-inicio">
+                <span class="hero-badge mb-2 d-inline-block">Panel de entrenador</span>
+                <h2 id="hero-saludo">Hola, Coach</h2>
+                <p class="hero-frase">Un gran equipo se construye entrenamiento a entrenamiento. Revisa la asistencia de tus deportistas y mantén tu perfil al día.</p>
+            </div>
+
+            <div class="resumen-grid">
+                <div class="resumen-card">
+                    <div class="resumen-icon"><i data-lucide="badge-check" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="resumen-label">Rol</div>
+                        <div class="resumen-valor" id="resumen-rol">Entrenador</div>
+                    </div>
+                </div>
+                <div class="resumen-card">
+                    <div class="resumen-icon"><i data-lucide="mail" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="resumen-label">Correo</div>
+                        <div class="resumen-valor" id="resumen-email">-</div>
+                    </div>
+                </div>
+                <div class="resumen-card">
+                    <div class="resumen-icon"><i data-lucide="calendar" aria-hidden="true"></i></div>
+                    <div>
+                        <div class="resumen-label">Miembro desde</div>
+                        <div class="resumen-valor" id="resumen-fecha-reg">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="fw-bold mb-3">Accesos rápidos</h5>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-4">
+                    <a href="asistencia.html" class="acceso-card">
+                        <div class="acceso-icon"><i data-lucide="clipboard-check" aria-hidden="true"></i></div>
+                        <h5>Ver asistencia</h5>
+                        <p>Revisa la asistencia de tus deportistas a las clases y entrenamientos programados.</p>
+                        <span class="acceso-link">Ir a Asistencia <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <a href="dashboard.html" class="acceso-card">
+                        <div class="acceso-icon"><i data-lucide="user-cog" aria-hidden="true"></i></div>
+                        <h5>Mi perfil</h5>
+                        <p>Actualiza tus datos personales y cambia tu contraseña de acceso.</p>
+                        <span class="acceso-link">Ir a Mi Perfil <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="acceso-card acceso-proximamente">
+                        <span class="badge-proximamente">Próximamente</span>
+                        <div class="acceso-icon"><i data-lucide="dumbbell" aria-hidden="true"></i></div>
+                        <h5>Planes de entrenamiento</h5>
+                        <p>Crea y asigna rutinas personalizadas a tus deportistas.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/inicio-common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) lucide.createIcons();
+            inicializarInicio('coach');
+        });
+    </script>
+</body>
+</html>
